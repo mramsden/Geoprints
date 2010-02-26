@@ -15,6 +15,10 @@ sub new
 	$self->{name} = "GeoPrints";
 	$self->{visible} = "all";
 
+	# This is a compatibility step, this can be removed later
+	# once the EPrints 3.2 API get's updated.
+	$self->{repository} = $self->{session};
+
 	return $self;
 }
 
@@ -23,10 +27,9 @@ sub render_content
 	my( $self ) = @_;
 
 	my $repository = $self->{repository};
-	my $xml = $repository->{xml};
 	my $eprint = $self->{eprint};
 
-	my $frag = $xml->create_document_fragment;
+	my $frag = $repository->xml->create_document_fragment;
 
 	$frag->appendChild( $self->html_phrase( 'description' ) );
 
