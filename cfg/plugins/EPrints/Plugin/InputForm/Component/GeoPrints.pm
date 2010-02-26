@@ -26,7 +26,7 @@ sub render_content
 	my $xml = $repository->{xml};
 	my $eprint = $self->{eprint};
 
-	my $frag = $xml->create_document_frag;
+	my $frag = $xml->create_document_fragment;
 
 	$frag->appendChild( $self->html_phrase( 'description' ) );
 
