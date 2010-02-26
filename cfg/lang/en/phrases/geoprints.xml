@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no" ?>
+<!DOCTYPE phrases SYSTEM "entities.dtd">
+
+<epp:phrases xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:epp="http://eprints.org/ep3/phrase">
+
+    <epp:phrase id="metapage_title_geoprints">GeoPrints</epp:phrase>
+    <epp:phrase id="Plugin/InputForm/Component/GeoPrints:title">GeoPrints</epp:phrase>
+    <epp:phrase id="Plugin/InputForm/Component/GeoPrints:description">GeoPrints will attempt to extract location names from your uploaded documents. It will then plot the documents on a map.</epp:phrase>
+
+</epp:phrases>
