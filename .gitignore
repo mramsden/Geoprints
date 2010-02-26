@@ -1,3 +1,9 @@
 documents
 html
 var
+cfg/apache.conf
+cfg/apachevhost.conf
+cfg/issues.xml
+cfg/lang/en/phrases/archive_name.xml
+cfg/lang/en/phrases/local.xml
+cfg/lang/en/phrases/zz_webcfg.xml
