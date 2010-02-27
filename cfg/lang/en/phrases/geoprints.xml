@@ -6,6 +6,8 @@
 
     <epp:phrase id="metapage_title_geoprints">GeoPrints</epp:phrase>
     <epp:phrase id="Plugin/InputForm/Component/GeoPrints:title">GeoPrints</epp:phrase>
-    <epp:phrase id="Plugin/InputForm/Component/GeoPrints:description">GeoPrints will attempt to extract location names from your uploaded documents. It will then plot the documents on a map.</epp:phrase>
+    <epp:phrase id="Plugin/InputForm/Component/GeoPrints:help">GeoPrints will attempt to extract location names from your uploaded documents. It will then plot the documents on a map.</epp:phrase>
+    <epp:phrase id="Plugin/InputForm/Component/GeoPrints:no_documents">You have not added any documents to this EPrint yet. Please upload some documents and then return to this screen.</epp:phrase>
+    <epp:phrase id="Plugin/InputForm/Component/GeoPrints:filename">Filename</epp:phrase>
 
 </epp:phrases>

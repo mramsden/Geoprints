@@ -1,0 +1,51 @@
+use EPrints;
+use LWP::UserAgent;
+use ParaTools::Utils;
+use utf8;
+
+use strict;
+
+my $eprints = EPrints->new;
+
+my $repository = $eprints->current_repository;
+return unless defined $repository;
+
+my $eprintid = $repository->param( 'eprintid' );
+unless( defined $eprintid )
+{
+	print "eprintid must be defined.";
+}
+
+my $documentid = $repository->param( 'documentid' );
+unless( defined $documentid )
+{
+	print "documentid must be defined.";
+}
+
+my $eprint = $repository->eprint( $eprintid );
+unless( defined $eprint )
+{
+	print "eprint not found.";
+}
+
+my @documents = $eprint->get_all_documents;
+foreach my $document ( @documents )
+{
+	next unless $document->get_id == $documentid;
+	
+	my $main_file = $document->local_path.'/'.$document->get_main;
+	
+	my $main_content = join '', ParaTools::Utils::get_content( $main_file );
+	$main_content =~ s/\s/ /g;
+	$main_content =~ s/[^a-z0-9']/ /gi;
+	#$main_content = substr $main_content, 0, 20;
+	#utf8::upgrade( $main_content );
+	#$main_content =~ s/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg;
+#	$main_content = substr $main_content, 0, 200;
+	my $req = HTTP::Request->new( POST => 'http://wherein.yahooapis.com/v1/document' );
+	$req->content_type('application/x-www-form-urlencoded');
+	$req->content('documentType=text/plain&documentContent='.$main_content.'&appid=ua_uVOTV34Hd.JmFfHyvsgH.nHpH9JJm02mgGH37BodxN6BVV8mgwGBQOlckdXivgg--');
+	my $ua = new LWP::UserAgent;
+	my $response = $ua->request( $req );
+	my $doc = $repository->xml->parse_string( $response->content );
+}
